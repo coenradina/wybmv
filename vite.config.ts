@@ -6,8 +6,8 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
 
   return {
-    // IMPORTANT for GitHub Pages: set the correct base path
-    // Replace "wybmv" if your repo name is different
+    // IMPORTANT for GitHub Pages + custom domain:
+    // your app lives at https://aastr.id/wybmv/ → path is /wybmv/
     base: '/wybmv/',
 
     server: {
@@ -26,6 +26,11 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
+    },
+
+    // Build into "docs" so GitHub Pages can serve from /docs on main
+    build: {
+      outDir: 'docs',
     },
   };
 });
